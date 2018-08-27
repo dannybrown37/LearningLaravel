@@ -5,6 +5,6 @@
     <title></title>
   </head>
   <body>
-    <h1>Hello, <?php echo $name ?>! This site is <?php echo $age ?> days old. </h1>
+    <h1>{{ $task->body }}</h1>
   </body>
 </html>

@@ -26,20 +26,34 @@ Route::get('/', function () {
 
 // After we've created tables in the database and added some data
 Route::get('/', function () {
-    $name = 'Cool Site';
-    $age = 1;
+    $startDate = strtotime("2018/08/26");
+    $now = time();
+    $name = 'Dear Reader';
+    $age = $now - $startDate;
+    $age = round($age / (60 * 60 * 24));
     $tasks = DB::table('tasks')->get(); // This is laravel's query builder
     return view('welcome', compact('name', 'age', 'tasks'));
 });
 
+// Here are examples of routing to a view from the resources/views path
+Route::get('/tasks', function () {
+    $tasks = DB::table('tasks')->latest()->get();
+    return view('tasks.task_index', compact('tasks'));
+});
+
+Route::get('/tasks/{task}', function ($id) {
+    $task = DB::table('tasks')->find($id);
+    return view('tasks.view_task', compact('task'));
+});
+
 // If we return a database query, Laravel will return it as JSON
-Route::get('/api', function () {
+Route::get('/tasks_api', function () {
     $tasks = DB::table('tasks')->get();
     return $tasks;
 });
 
 // Here's an example of using a wildcard in the url
-Route::get('/api/{task}', function ($id) {
+Route::get('/tasks_api/{id}', function ($id) {
     // dd($id); // This is a helper task laravel provides -- dump and die
     $task = DB::table('tasks')->find($id);
     dd($task);
