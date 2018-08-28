@@ -11,38 +11,28 @@
 |
 */
 
-/* Here's the basic, hard-coded version
-Route::get('/', function () {
-    $name = 'Cool Site';
-    $age = 1;
-    $tasks = [
-      'Go to the play',
-      'Finish my Laravel tutorial',
-      'Clean the house'
-    ];
-    return view('welcome', compact('name', 'age', 'tasks'));
-});
-*/
+use App\Task; // Allows us to refer to just Task rather than App\Task below
 
 // After we've created tables in the database and added some data
 Route::get('/', function () {
     $startDate = strtotime("2018/08/26");
     $now = time();
     $name = 'Dear Reader';
-    $age = $now - $startDate;
-    $age = round($age / (60 * 60 * 24));
+    $age = round(($now - $startDate) / (60 * 60 * 24));
     $tasks = DB::table('tasks')->get(); // This is laravel's query builder
     return view('welcome', compact('name', 'age', 'tasks'));
 });
 
 // Here are examples of routing to a view from the resources/views path
 Route::get('/tasks', function () {
-    $tasks = DB::table('tasks')->latest()->get();
+    // $tasks = DB::table('tasks')->get(); // SAME AS:
+    $tasks = Task::all(); // Eloquent model usage
     return view('tasks.task_index', compact('tasks'));
 });
 
 Route::get('/tasks/{task}', function ($id) {
-    $task = DB::table('tasks')->find($id);
+    // $task = DB::table('tasks')->find($id); // SAME AS:
+    $task = Task::find($id); // Eloquent model usage
     return view('tasks.view_task', compact('task'));
 });
 

@@ -21,7 +21,7 @@
     <!-- This uses  blade, Laravel's templating engine. Compiles down to vanilla
          PHP. Thus, these each produce the same output. For basically any <?php  ?>
          directive, you can replace it simply with the @ symbol. -->
-    <h2>Blade Templating Engine</h2>
+    <h2>Defined With the Blade Templating Engine</h2>
     <ul>
       @foreach ($tasks as $task)
         <li>

@@ -5,6 +5,14 @@
     <title></title>
   </head>
   <body>
-    <h1>Hello, <?php echo $name ?>! This site is <?php echo $age ?> days old. </h1>
+    <h1>Hello, {{ $name }}! This site is {{ $age }} days old. </h1>
+    <nav>
+      <li>
+        <a href="/tasks">The Task List</a>
+      </li>
+      <li>
+        <a href="/about">About Us</a>
+      </li>
+    </nav>
   </body>
 </html>
