@@ -26,3 +26,6 @@
      App\Task::incomplete();
      // And it will provide the same results as the first command in bullet 5.
      App\Task::complete(); // The opposite works too and I added it as well.
+6. php artisan make:controller NameOfController
+   --> makes a controller at app\Http\Controllers
+7. 
