@@ -7,6 +7,7 @@ use App\Task;
 
 class TasksController extends Controller
 {
+  
     public function index()
     {
         $tasks = Task::all(); // Eloquent model usage
@@ -39,14 +40,10 @@ class TasksController extends Controller
     // Requirement for route-model binding:
     //   -- The variable name must match up with the wildcard in the route.
     //   -- Laravel will assume it's looking for primary key.
-    //   ----> We can, however, change this to look for something else. 
+    //   ----> We can, however, change this to look for something else.
     public function api_show(Task $task) // Task::find(wildcard)
     {
         return $task;
     }
 
-    public function about()
-    {
-        return view('about');
-    }
 }

@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Tasks</title>
-  </head>
-  <body>
+@extends ('layouts.master')
 
+@section ('content')
     <h1>The Tasks List</h1>
 
     <!-- This is vanilla PHP -->
@@ -31,5 +26,4 @@
         </li> <!-- note that semicolon not required for blade -->
       @endforeach
     </ul>
-  </body>
-</html>
+@endsection

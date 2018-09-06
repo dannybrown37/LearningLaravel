@@ -28,4 +28,6 @@
      App\Task::complete(); // The opposite works too and I added it as well.
 6. php artisan make:controller NameOfController
    --> makes a controller at app\Http\Controllers
-7. 
+7. php artisan make:model Post -mc
+   --> makes a model named Post with a migration and a controller
+8. 
