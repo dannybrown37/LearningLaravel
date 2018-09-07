@@ -9,12 +9,13 @@ class PostsController extends Controller
 {
     public function index()
     {
-        return view('posts.blog_index');
+        $posts = Post::all();
+        return view('posts.blog_index', compact('posts'));
     }
 
-    public function show()
+    public function show(Post $post)
     {
-        return view('posts.show_blog_post');
+        return view('posts.show_blog_post', compact('post'));
     }
 
     public function create()
