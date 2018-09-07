@@ -8,20 +8,26 @@
 @endsection
 
 @section ('content')
-<form method="POST" action="/blog">
-  {{ csrf_field() }} <!-- include this call with every form -->
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="title">
-  </div>
-  <div class="form-group">
-    <label for="body">Body</label>
-    <textarea name="body" id="body" rows="8" cols="80" class="form-control"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Publish</button>
-</form>
-@endsection
+  <form method="POST" action="/blog">
+    {{ csrf_field() }} <!-- include this call with every form -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="exampleInputEmail1"
+             name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="body">Body</label>
+      <textarea name="body" id="body" rows="8" cols="80"
+                class="form-control" required></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Publish</button>
+    </div>
+  </form>
 
+  @include ('layouts.errors')
+
+@endsection
 <!--
   GET /posts    --view all posts
   GET /posts/create   --create a new post

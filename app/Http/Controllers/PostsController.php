@@ -9,7 +9,7 @@ class PostsController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->get(); // inverse of latest() is oldest()
         return view('posts.blog_index', compact('posts'));
     }
 
@@ -42,8 +42,6 @@ class PostsController extends Controller
         // Save it to the database
         $post->save();
 
-        // Redirect to the home page
-        return redirect('/blog');
         */
 
         // Here's an alternative method to do the same thing as above:
@@ -56,6 +54,17 @@ class PostsController extends Controller
         // But *only* with a protected $fillable designation in app/Post.php
 
         // Or this syntax works too!:
+
+        $this->validate(request(), [
+          'title' => 'required|min:2', // lots of tags available, check the docs
+          'body' => 'required|min:2',
+        ]); // validate() tries to validate. If it doesn't, redirects back.
+        // When redirects, it returns a populated error variable.
+        // We can use this in create_post.blade.php --> see this file
+
         Post::create(request(['title', 'body']));
+
+        // Redirect to the home page
+        return redirect('/blog');
     }
 }

@@ -1,4 +1,4 @@
-<div class="col-sm-3 offset-sm-1 blog-sidebar">
+
   <div class="sidebar-module sidebar-module-inset">
     <h4>About</h4>
     <p>I'm learning Laravel. It's pretty, pretty good. </p>
@@ -18,7 +18,7 @@
     </ol>
   </div>
   <div class="sidebar-module">
-    <h4>Places</h4>
+    <h4>Around</h4>
     <ol class="list-unstyled">
       <li>
         <a href="https://github.com/dannybrown37/LearningLaravel" target="_blank">
@@ -27,4 +27,3 @@
       </li>
     </ol>
   </div>
-</div><!-- /.blog-sidebar -->

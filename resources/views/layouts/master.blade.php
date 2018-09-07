@@ -42,7 +42,9 @@
             @yield('content')
           </div>
 
-          @include('layouts.sidebar')
+          <div class="col-sm-3 offset-sm-1 blog-sidebar">
+            @include('layouts.sidebar')
+          </div><!-- /.blog-sidebar -->
 
         </div>
       </div>

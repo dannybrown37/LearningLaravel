@@ -13,18 +13,21 @@
 @section ('content')
 
   @foreach ($posts as $post)
-    <h2>
-      <a href="/blog/{{ $post->id }}">
-        {{ $post->title }}
-      </a>
-    </h2> <!-- note that semicolon not required for blade -->
-    <p>
-      {{ $post->body }}
-    </p>
-    <p>
-      Created at {{$post->created_at}}
-    </p>
-    <hr>
+    <div class="blog-post">
+      <h2 class="blog-post-title">
+        <a href="/blog/{{ $post->id }}">
+          {{ $post->title }}
+        </a>
+      </h2> <!-- note that semicolon not required for blade -->
+      <p>
+        {{ $post->body }}
+      </p>
+      <p class = "blog-post-meta">
+        <!-- Created at {{$post->created_at}} --> <!-- This basic format is not attractive -->
+        {{ $post->created_at->toFormattedDateString() }}
+      </p>
+      <hr>
+    </div>
   @endforeach
 
 @endsection

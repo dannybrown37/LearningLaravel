@@ -14,7 +14,8 @@
     {{ $post->body }}
   </p>
   <p>
-    Created at {{$post->created_at}}
+    Posted at {{$post->created_at->toFormattedDateString()}} |
+    <a href="/blog">Return to Blog Index</a>
   </p>
 
 @endsection

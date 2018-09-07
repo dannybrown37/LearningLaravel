@@ -1,7 +1,5 @@
 <?php
 
-
-
 use App\Task; // Allows us to refer to just Task rather than App\Task below
 
 Route::get('/', function () {
