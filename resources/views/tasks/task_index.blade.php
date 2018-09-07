@@ -1,8 +1,16 @@
 @extends ('layouts.master')
 
-@section ('content')
-    <h1>The Tasks List</h1>
 
+@section('header')
+  <div class="container">
+    <h1 class="blog-title">The Tasks List</h1>
+    <p class="lead blog-description">A nice intro to the Blade templating
+    engine as well using data from a database.</p>
+  </div>
+@endsection
+
+
+@section ('content')
     <!-- This is vanilla PHP -->
     <!--
     <h2>Vanilla PHP</h2>
@@ -16,7 +24,6 @@
     <!-- This uses  blade, Laravel's templating engine. Compiles down to vanilla
          PHP. Thus, these each produce the same output. For basically any <?php  ?>
          directive, you can replace it simply with the @ symbol. -->
-    <h2>Defined With the Blade Templating Engine</h2>
     <ul>
       @foreach ($tasks as $task)
         <li>

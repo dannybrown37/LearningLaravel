@@ -86,4 +86,7 @@ Route::get('/blog', 'PostsController@index');
 // Or we could combine them in the make:model with a couple flags:
 // <<< php artisan make:model Post -mc
 
-Route::get('/blog/{post}', 'PostsController@show');
+Route::get('/blog/create', 'PostsController@create');
+
+Route::post('/blog', 'PostsController@store');
+// Route::get('/blog/{post}', 'PostsController@show');

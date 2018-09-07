@@ -30,4 +30,14 @@
    --> makes a controller at app\Http\Controllers
 7. php artisan make:model Post -mc
    --> makes a model named Post with a migration and a controller
-8. 
+8. Trick when generating a controller:
+  <<< php artisant make:controller TasksController -r
+  The -r flag makes a "resourceful" controller, which will include shells for
+  the following functions:
+    -- index GET to /tasks
+    -- create GET to /tasks/create
+    -- store POST to /tasks
+    -- show GET to /tasks/{id}
+    -- edit GET to /tasks/{id}/edit
+    -- update PATCH to /tasks/{id}
+    -- destroy DELETE /tasks/{id}
