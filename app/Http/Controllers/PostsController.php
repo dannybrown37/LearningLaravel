@@ -7,6 +7,11 @@ use App\Post;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('auth')->except(['index', 'show']); // Must be signed in to create a post
+    }
+
     public function index()
     {
         $posts = Post::latest()->get(); // inverse of latest() is oldest()
@@ -62,9 +67,24 @@ class PostsController extends Controller
         // When redirects, it returns a populated error variable.
         // We can use this in create_post.blade.php --> see this file
 
-        Post::create(request(['title', 'body']));
+        /* Alternatively defined below
+        Post::create([
+          'title' => request('title'),
+          'body' => request('body'),
+          'user_id' => auth()->id()
+        ]);
+        */
+
+        // Here's an alternate method to do the same thing as above:
+        auth()->user()->publish(
+          new Post(request(['title', 'body'])) // See User.php for publish method
+        );
+
 
         // Redirect to the home page
         return redirect('/blog');
+
+
+
     }
 }

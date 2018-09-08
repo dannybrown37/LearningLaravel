@@ -13,8 +13,8 @@
   <p>
     {{ $post->body }}
   </p>
-  <p>
-    Posted at {{$post->created_at->toFormattedDateString()}} |
+  <p class="blog-post-meta">
+    Posted by {{ $post->user->name }} at {{$post->created_at->toFormattedDateString()}} |
     <a href="/blog">Return to Blog Index</a>
   </p>
 

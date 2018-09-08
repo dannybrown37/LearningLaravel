@@ -4,7 +4,7 @@ use App\Task; // Allows us to refer to just Task rather than App\Task below
 
 Route::get('/', function () {
   return view('welcome');
-});
+})->name('home'); // This is named home and will redirect here when redirecting to home
 
 // After we've created tables in the database and added some data
 Route::get('/about', function () {
@@ -49,11 +49,8 @@ Route::get('/tasks/{task}', function ($id) {
 });
 */
 
-
-
 Route::get('/tasks_api', 'TasksController@api');
 Route::get('/tasks_api/{task}', 'TasksController@api_show');
-
 
 /* Redoing all of the below with controllers for solidification
 // If we return a database query, Laravel will return it as JSON
@@ -89,13 +86,16 @@ Route::get('/blog', 'PostsController@index');
 // <<< php artisan make:model Post -mc
 
 Route::get('/blog/create', 'PostsController@create');
-
 Route::post('/blog', 'PostsController@store');
-
 Route::get('/blog/{post}', 'PostsController@show');
-
 Route::post('/blog/{post}/comments', 'CommentsController@store');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
+
+Route::get('/register', 'RegistrationsController@create');
+Route::post('/register', 'RegistrationsController@store');
+Route::get('/login', 'SessionsController@create')->name('login');
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy'); // Could use a post request too
