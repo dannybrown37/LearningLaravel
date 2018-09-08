@@ -19,6 +19,18 @@
     </ol>
   </div>
   <div class="sidebar-module">
+    <h4>The Grand Archives</h4>
+    <ol class="list-unstyled">
+      @foreach ($archives as $period)
+        <li>
+          <a href="/blog/?month={{ $period['month'] }}&year={{ $period['year'] }}">
+            {{ $period['month'] }} {{ $period['year'] }}
+          </a>
+        </li>
+      @endforeach
+    </ol>
+  </div>
+  <div class="sidebar-module">
     <h4>Around</h4>
     <ol class="list-unstyled">
       <li>

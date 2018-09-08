@@ -24,7 +24,7 @@
       </p>
       <p class = "blog-post-meta">
         <!-- Created at {{$post->created_at}} --> <!-- This basic format is not attractive -->
-        {{ $post->created_at->toFormattedDateString() }}
+        Posted by {{ $post->user->name }} at {{ $post->created_at->toFormattedDateString() }}
       </p>
       <hr>
     </div>

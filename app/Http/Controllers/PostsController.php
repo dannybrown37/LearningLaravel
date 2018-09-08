@@ -14,8 +14,28 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->get(); // inverse of latest() is oldest()
-        return view('posts.blog_index', compact('posts'));
+        /* This is all a little gross, let's refactor below
+        $posts = Post::latest(); // inverse of latest() is oldest()
+
+        if ($month = request('month')) {
+          $posts->whereMonth('created_at', $month);
+        }
+
+        if ($year = request('year')) {
+          $posts->whereYear('created_at', $year);
+        }
+
+        $posts = $posts->get();
+        */
+
+        // Refactoring of above by placing it in Post.php in scopeFilter():
+        $posts = Post::latest()->filter(request(['month', 'year']))->get();
+        // see scopeFilter() in Post.php
+
+        // Retrieval functions now stored in Post.php in archives()
+        $archives = Post::archives();
+
+        return view('posts.blog_index', compact('posts', 'archives'));
     }
 
     public function show(Post $post)

@@ -2,7 +2,7 @@
   <a class="navbar-brand" href="/">Danny Learns Laravel</a>
   <div class="collapse navbar-collapse" id="navbarCollapse">
 
-    <!-- right side -->
+    <!-- left side -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="/blog">Blog<span class="sr-only">(current)</span></a>
@@ -13,13 +13,13 @@
       <li class="nav-item">
         <a class="nav-link" href="/about">About</a>
       </li>
-    </ul> <!-- end right side -->
+    </ul> <!-- end left side -->
 
-    <!-- left side -->
+    <!-- right side -->
     <ul class="navbar-nav ml-auto">
       @if (Auth::check())
         <li class="nav-item">
-          <a class="nav-link" href="#">Hi, {{ Auth::user()->name }}!</a>
+          <a class="nav-link">Hi, {{ Auth::user()->name }}!</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -32,7 +32,7 @@
           <a class="nav-link" href="/login">Login</a>
         </li>
       @endif
-    </ul> <!-- end left side -->
+    </ul> <!-- end right side -->
 
   </div>
 </nav>
