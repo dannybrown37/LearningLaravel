@@ -5,16 +5,17 @@
   </div>
   <div class="sidebar-module">
     <h4>Add a Blog Post</h4>
-    <a href="/blog/create">Yes, Please</a>
+    <ol class="list-unstyled">
+      <li>
+        <a href="/blog/create">Yes, Please</a>
+      </li>
+    </ol>
+
   </div>
   <div class="sidebar-module">
-    <h4>Archives</h4>
+    <h4>Add a Task</h4>
     <ol class="list-unstyled">
-      <li><a href="#">The Grand Archives</a></li>
-      <li><a href="#">The Great Archives</a></li>
-      <li><a href="#">The Mythic Archives</a></li>
-      <li><a href="#">The Legendary Archives</a></li>
-      <li><a href="#">The Mysterious Archives</a></li>
+      <a href="/tasks/create">Righty-o, Chap</a>
     </ol>
   </div>
   <div class="sidebar-module">

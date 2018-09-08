@@ -41,3 +41,19 @@
     -- edit GET to /tasks/{id}/edit
     -- update PATCH to /tasks/{id}
     -- destroy DELETE /tasks/{id}
+9. php artisan make:auth
+   --> scaffolds basic login and registration views.
+   --> does all the annoying, tedious stuff for you in just minutes.
+   --> intended to do more or less at the beginning of the project.
+10. Creating a new user using tinker:
+    λ php artisan tinker
+    Psy Shell v0.9.7 (PHP 7.2.8 — cli) by Justin Hileman
+    >>> $user = new App\User;
+    => App\User {#2928}
+    >>> $user->name = 'danny';
+    => "danny"
+    >>> $user->email = 'danny@test.com';
+    => "danny@test.com"
+    >>> $user->password = bcrypt('dont-hard-code-the-password');
+    => "$2y$10$66T8v3DvgXbvl.vdQJCVXeOa/hs63LYeeoips2/n1GCzTcQwAdnla"
+11. 

@@ -37,6 +37,8 @@ Route::get('/tasks', 'TasksController@index');
 // Controller generator:
 //  php artisan make:controller TasksController
 
+Route::get('/tasks/create', 'TasksController@create');
+Route::post('/tasks', 'TasksController@store');
 Route::get('/tasks/{task}', 'TasksController@show');
 
 /* This is handled above using a controller
@@ -46,6 +48,8 @@ Route::get('/tasks/{task}', function ($id) {
     return view('tasks.view_task', compact('task'));
 });
 */
+
+
 
 Route::get('/tasks_api', 'TasksController@api');
 Route::get('/tasks_api/{task}', 'TasksController@api_show');
@@ -89,3 +93,9 @@ Route::get('/blog/create', 'PostsController@create');
 Route::post('/blog', 'PostsController@store');
 
 Route::get('/blog/{post}', 'PostsController@show');
+
+Route::post('/blog/{post}/comments', 'CommentsController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

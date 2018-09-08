@@ -18,4 +18,38 @@
     <a href="/blog">Return to Blog Index</a>
   </p>
 
+  <div class="comments">
+    <ul class="list-group">
+    @foreach ($post->comments as $comment)
+      <li class="list-group-item">
+        <em>
+          {{ $comment->created_at->diffForHumans() }}:
+          <!-- returns a readable form of how long ago apost was -->
+        </em>
+        {{ $comment->body }}
+      </li>
+    @endforeach
+    </ul>
+  </div>
+
+  <!-- add a comment -->
+
+  <div class="card">
+    @include ('layouts.errors')
+    <div class="card-block">
+      <form method="POST" ACTION="/blog/{{ $post->id }}/comments/">
+        {{ csrf_field() }}
+        <div class="form-group">
+          <textarea name="body" class="form-control" placeholder="Comment!"></textarea>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Publish</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
 @endsection

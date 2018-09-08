@@ -6,8 +6,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Task extends Model
 {                          // Task::incomplete() returns an instance of Eloquent builder
     public function scopeIncomplete($query) // allows for Task::incomplete()->get();
@@ -15,7 +13,7 @@ class Task extends Model
       return $query->where('completed', 0);
     }
 
-    // This is a simpler version of the above that can't use additional queries 
+    // This is a simpler version of the above that can't use additional queries
     public static function complete()
     {
       return static::where('completed', 1)->get();

@@ -7,7 +7,7 @@ use App\Task;
 
 class TasksController extends Controller
 {
-  
+
     public function index()
     {
         $tasks = Task::all(); // Eloquent model usage
@@ -19,6 +19,23 @@ class TasksController extends Controller
         // We don't need the next line due to route-model binding.
         // $task = Task::find($id); // Eloquent model usage
         return view('tasks.view_task', compact('task'));
+    }
+
+    public function create()
+    {
+      return view('tasks.create_task');
+    }
+
+    public function store()
+    {
+        $this->validate(request(), [
+          'body' => 'required|min:3',
+        ]);
+
+        Task::create(request(['body']));
+
+        // Redirect to the home page
+        return redirect('/tasks');
     }
 
     public function api()

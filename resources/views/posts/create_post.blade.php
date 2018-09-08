@@ -12,7 +12,7 @@
     {{ csrf_field() }} <!-- include this call with every form -->
     <div class="form-group">
       <label for="title">Title</label>
-      <input type="text" class="form-control" id="exampleInputEmail1"
+      <input type="text" class="form-control" id="title"
              name="title" required>
     </div>
     <div class="form-group">
@@ -28,7 +28,8 @@
   @include ('layouts.errors')
 
 @endsection
-<!--
+
+<!-- NOTES
   GET /posts    --view all posts
   GET /posts/create   --create a new post
   POST /posts     -- add a new post to /posts with a POST request
