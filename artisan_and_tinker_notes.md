@@ -31,7 +31,7 @@
 7. php artisan make:model Post -mc
    --> makes a model named Post with a migration and a controller
 8. Trick when generating a controller:
-  <<< php artisant make:controller TasksController -r
+  <<< php artisan make:controller TasksController -r
   The -r flag makes a "resourceful" controller, which will include shells for
   the following functions:
     -- index GET to /tasks
@@ -48,12 +48,18 @@
 10. Creating a new user using tinker:
     λ php artisan tinker
     Psy Shell v0.9.7 (PHP 7.2.8 — cli) by Justin Hileman
-    >>> $user = new App\User;
+    $user = new App\User;
     => App\User {#2928}
-    >>> $user->name = 'danny';
+    $user->name = 'danny';
     => "danny"
-    >>> $user->email = 'danny@test.com';
+    $user->email = 'danny@test.com';
     => "danny@test.com"
-    >>> $user->password = bcrypt('dont-hard-code-the-password');
+    $user->password = bcrypt('dont-hard-code-the-password');
     => "$2y$10$66T8v3DvgXbvl.vdQJCVXeOa/hs63LYeeoips2/n1GCzTcQwAdnla"
-11. 
+11. Using model factories for unit testing within tinker:
+    factory('App\User')->make();
+    <<< Outputs a fake name and a fake email
+    factory('App\User')->create();
+    <<< Same, except it persists the data and includes a created_at, etc.
+    factory('App\User', 50)->make();
+    <<< Makes 50 users
