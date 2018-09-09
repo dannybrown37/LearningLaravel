@@ -29,8 +29,16 @@ class PostsController extends Controller
         */
 
         // Refactoring of above by placing it in Post.php in scopeFilter():
-        $posts = Post::latest()->filter(request(['month', 'year']))->get();
+        $posts = Post::latest()
+          ->filter(request(['month', 'year']))
+          ->get();
         // see scopeFilter() in Post.php
+
+        // *** Example of REPOSITORIES and DEPENDENCY INJECTION ***
+        // Here's an alternate method that shows an example of using a repostitory:
+        //$posts = (new \App\Repositories\Posts)->all(); // works, but preferred is:
+        //$posts = $posts->all(); // note that Posts $posts must be passed into function
+                                 // also use App\Repositories\Posts; at top
 
         // Retrieval functions now stored in Post.php in archives()
         $archives = Post::archives();

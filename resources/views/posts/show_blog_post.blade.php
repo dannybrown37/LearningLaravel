@@ -23,7 +23,7 @@
     @foreach ($post->comments as $comment)
       <li class="list-group-item">
         <em>
-          {{ $comment->created_at->diffForHumans() }}:
+          {{ $comment->created_at->diffForHumans() }} by {{ $comment->user->name }}:
           <!-- returns a readable form of how long ago apost was -->
         </em>
         {{ $comment->body }}

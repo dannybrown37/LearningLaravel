@@ -16,9 +16,17 @@ class CommentsController extends Controller
       ]);
       */
 
-      $this->validate(request(), ['body' => 'required|min:2']);
+      $this->validate(request(), [
+        'body' => 'required',
+      ]);
 
-      $post->addComment(request('body')); // see Post model for addComment()
+      Comment::create([
+        'body' => request('body'),
+        'post_id' => $post->id,
+        'user_id' => auth()->id()
+      ]);
+
+      // $post->addComment(request('body')); // see Post model for addComment()
 
       return back(); // helper function that redirects to previous page
     }

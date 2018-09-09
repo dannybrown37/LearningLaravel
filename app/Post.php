@@ -17,16 +17,19 @@ class Post extends Model
     }
     // using $post-comments in tinker will return a string of all comments
 
+
     public function user() // $comment->post->user
     {
       return $this->belongsTo(User::class);
     }
 
+
     public function addComment($body)
     {
-      // We could use the long-form way from CommentsContrller; instead we use Eloquent:
+      // We could use the long-form way from CommentsController; instead we use Eloquent:
       $this->comments()->create(compact('body'));
     }
+
 
     public function scopeFilter($query, $filters)
     {
@@ -42,6 +45,7 @@ class Post extends Model
         }
       }
     }
+
 
     public static function archives()
     {

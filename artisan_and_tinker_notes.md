@@ -63,3 +63,8 @@
     <<< Same, except it persists the data and includes a created_at, etc.
     factory('App\User', 50)->make();
     <<< Makes 50 users
+12. php artisan make:provider SocialMediaServiceProvider
+    -- This makes a new service provider class named SocialMediaServiceProvider
+    ----> It is created in App\Providers\SocialMediaServiceProdier.php
+    ------> Then to use it, we update are config/app.php file to include in the list.
+13. 
