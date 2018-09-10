@@ -51,6 +51,16 @@ class RegistrationsController extends Controller
       $request->persist(); // See RegistrationRequest
       // Jeffrey Way says most people don't do it this way! Just a thing specific to him
 
+      // Crash course in session handling flash messaging starts here
+      // session('message', 'Here is a default message!'); // Available the entire session
+
+      // To store a custom message in the message variable we could use this in tinker:
+      // session(['message' => 'Something custom']);
+
+      // We can also flash a message, available for exactly one page load:
+      session()->flash('message', 'Thanks so much for signing up!');
+
+
       // Redirect to home page
       return redirect('/');
 
