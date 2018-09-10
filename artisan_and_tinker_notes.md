@@ -67,4 +67,12 @@
     -- This makes a new service provider class named SocialMediaServiceProvider
     ----> It is created in App\Providers\SocialMediaServiceProdier.php
     ------> Then to use it, we update are config/app.php file to include in the list.
-13. 
+13. php artisan make:mail WelcomeEmail
+    -- Creates a app/Mail/WelcomeEmail.php with prerendered classes.
+    ----> Used in RegistrationsController to send a welcome email after signup.
+    php artisan make:mail WelcomeAgain --markdown="emails.welcome-again"
+    --> Here we've added a nice flag to provide us with a layout.
+    ----> In the WelcomeAgain class, it calls a markdown method rather than a view.
+    ------> It also generated a file at resources/views/emails/welcome-again.blade.php
+    --------> Which has some helpfu starting text!
+14. 

@@ -28,7 +28,7 @@ class SessionsController extends Controller
     // If so, sign them in
 
     // Redirect to home page
-    return redirect()->home();
+    return redirect("/");
 
   }
 

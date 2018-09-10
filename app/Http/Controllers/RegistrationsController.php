@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Mail\Welcome;
 
 class RegistrationsController extends Controller
 {
@@ -32,8 +33,15 @@ class RegistrationsController extends Controller
       //Sign them in
       auth()->login($user);
 
+      // Send them a welcome email
+      \Mail::to($user)->send(new Welcome($user));
+      // config/mail.php provides info on many mail drivers to do this!
+      // mailtrap.io is a service that can do this for us.
+      // We signed up for an account and set the appropriate info in the .env file.
+      // Go to config/mail.php where we can set our "from" email/name
+
       // Redirect to home page
-      return redirect()->home();
+      return redirect('/');
 
     }
 }
