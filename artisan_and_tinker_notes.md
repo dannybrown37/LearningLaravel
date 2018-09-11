@@ -85,4 +85,35 @@
     <<< $post->tags->attach($tag) // example of attach method
     <<< There is also a detach($tag) method
     <<< Check episode 30 of Laracasts for more! :)
-17. 
+17. php artisan event:generate
+    - This will read our EventServiceProvider and create the appropriate directories
+      and files/classes for Events and Listeners as specified.
+    - Doing it this way will also set up your EventListener to automaticallys
+      handle(SomeEvent $event)
+    - For example:
+    protected $listen = [
+        'App\Events\ThreadCreated' => [
+          'App\Listeners\NotifySubscribers',
+        ]
+    ];
+    - This create an event listener, Events\ThreadCreated
+    - It will also create an event, Listeners\NotifySubscribers
+18. Following from #17, we can then use the following command in Tinker to test:    
+    event(new App\Events\ThreadCreated(['name' => "Some New Thread"]));
+    - This will pring out the following:
+        string(43) "Some New Thread was published to the forum."
+    => [
+         null,
+       ]
+    - It listened for the event, heard it, and spit out the event. Boom.
+19. php artisan make:listener CheckForSpam --event="ThreadCreated"
+    - This creates another listener associated wit the ThreadCreated event.
+    - We also need to update our service provider.
+    - Tinker example:
+      event(new App\Events\ThreadCreated(['name' => "Some New Thread"]));
+      string(43) "Some New Thread was published to the forum."
+      string(17) "Checking for spam"
+      => [
+           null,
+           null,
+         ]
