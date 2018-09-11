@@ -74,6 +74,15 @@
     --> Here we've added a nice flag to provide us with a layout.
     ----> In the WelcomeAgain class, it calls a markdown method rather than a view.
     ------> It also generated a file at resources/views/emails/welcome-again.blade.php
-    --------> Which has some helpfu starting text!
+    --------> Which has some helpful starting text!
 14. php artisan make:request RegistrationRequest
     --> This creates a file at app\Http\Requests\RegistrationRequest.php
+15. php artisan make:model Tag -m
+    --> Seen this before. Creates a model and migration for Tag.
+    ----> In this case, it is the first step in relating models using a pivot table.
+    ------> Next steps in the pivot table is in the create_tags_table migration
+16. Once we've set up our tags, we can use tinker to start checking stuff:
+    <<< $post->tags->attach($tag) // example of attach method
+    <<< There is also a detach($tag) method
+    <<< Check episode 30 of Laracasts for more! :)
+17. 

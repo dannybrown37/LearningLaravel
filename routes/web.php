@@ -19,6 +19,9 @@ Route::post('/blog', 'PostsController@store');
 Route::get('/blog/{post}', 'PostsController@show');
 Route::post('/blog/{post}/comments', 'CommentsController@store');
 
+// TagsController
+Route::get('/blog/tags/{tag}', 'TagsController@index');
+
 // Auth stuff
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

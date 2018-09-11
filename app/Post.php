@@ -84,7 +84,13 @@ class Post extends Model
                  strftime("%m", created_at) * 3, 3)
                  as month,
              */
+    }
 
+    // Setting up a many-to-many relationship here with the belongsToMany below
+    // The other half is in Tag.php
+    public function tags()
+    {
+      return $this->belongsToMany(Tag::class);
     }
 
 

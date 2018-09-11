@@ -4,6 +4,18 @@
 @section('header')
   <div class="container">
     <h1 class="blog-title">{{ $post->title }}</h1>
+
+  @if (count($post->tags))
+    <ul class="list-unstyled">
+      @foreach ($post->tags as $tag)
+        <li>
+          <a href="/blog/tags/{{ $tag->name }}">
+            <em>{{ $tag->name }}</em>
+          </a>
+        </li>
+      @endforeach
+    </ul>
+  @endif
   </div>
 @endsection
 
